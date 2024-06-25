@@ -68,8 +68,8 @@ if __name__ == "__main__":
             os.makedirs(dire)
 
     # Plot all the stock prices
-    fig_price, ax_price = plt.subplots(figsize=(14, 12), layout='constrained')
-    fig_pct, ax_pct = plt.subplots(figsize=(20, 12), layout='constrained')
+    fig_price, ax_price = plt.subplots(num=1, figsize=(14, 12), layout='constrained')
+    fig_pct, ax_pct = plt.subplots(num=2, figsize=(20, 12), layout='constrained')
     ax_price.set_title('Stock Prices')
     ax_pct.set_title('Stock Prices Percentage Change')
     ax_price.set_xlabel('time')
@@ -81,7 +81,9 @@ if __name__ == "__main__":
         ax_pct.plot(prices_pct[i], label=f"stock {i}", linewidth=0.8)
     ax_price.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     ax_pct.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.figure(1)
     plt.savefig(output_dirs[0] + "stock_prices.pdf")
+    plt.figure(2)
     plt.savefig(output_dirs[0] + "stock_prices_pct.pdf")
     plt.close(fig_price)
     plt.close(fig_pct)
